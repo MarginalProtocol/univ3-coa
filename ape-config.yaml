@@ -1,0 +1,43 @@
+name: univ3-coa
+
+plugins:
+  - name: alchemy
+    version: 0.7.1
+  - name: etherscan
+    version: 0.7.1
+  - name: solidity
+    version: 0.7.1
+  - name: foundry
+    version: 0.7.3
+  - name: arbitrum
+    version: 0.7.2
+  - name: base
+    version: 0.7.1
+
+default_ecosystem: ethereum
+
+ethereum:
+  default_network: goerli
+  mainnet_fork:
+    default_provider: foundry
+
+foundry:
+  fork:
+    ethereum:
+      mainnet:
+        upstream_provider: alchemy
+      goerli:
+        upstream_provider: alchemy
+      sepolia:
+        upstream_provider: alchemy
+    base:
+      mainnet:
+        upstream_provider: alchemy
+
+dependencies:
+  - name: uniswap-v3-core
+    github: Uniswap/v3-core
+    ref: main
+  - name: uniswap-v3-periphery
+    github: Uniswap/v3-periphery
+    ref: main
