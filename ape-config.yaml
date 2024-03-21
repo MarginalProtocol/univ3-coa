@@ -17,7 +17,9 @@ plugins:
 default_ecosystem: ethereum
 
 ethereum:
-  default_network: goerli
+  default_network: mainnet-fork
+  mainnet:
+    default_provider: alchemy
   mainnet_fork:
     default_provider: foundry
 

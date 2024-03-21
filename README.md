@@ -1,6 +1,6 @@
 # univ3-coa
 
-Uniswap v3 cost of attack calculator for TWAP oracle manipulation.
+[Uniswap v3](https://github.com/uniswap/v3-core) cost of attack calculator for TWAP oracle manipulation.
 
 ## Installation
 
