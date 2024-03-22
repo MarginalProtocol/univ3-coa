@@ -8,7 +8,6 @@ MAX_TICK = -MIN_TICK
 
 SECONDS_AGO = 43200
 BLOCK_TIME = 12
-MAX_ORACLE_TICK_DELTA = 10  # 10 bps manipulation on the 12 hr TWAP
 
 
 def main():
@@ -36,7 +35,9 @@ def main():
     )
     click.echo(f"Start tick: {start_tick}")
 
-    max_tick_delta = (MAX_ORACLE_TICK_DELTA * SECONDS_AGO) // BLOCK_TIME
+    # max manipulation on time weighted average tick translates moving to max tick delta in spot
+    max_oracle_tick_delta = click.prompt("Max oracle tick delta", type=int)
+    max_tick_delta = (max_oracle_tick_delta * SECONDS_AGO) // BLOCK_TIME
     click.echo(f"Max tick delta: {max_tick_delta}")
 
     stop_tick_up = start_tick + max_tick_delta + 1
