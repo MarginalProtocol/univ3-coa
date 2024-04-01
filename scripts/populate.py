@@ -1,7 +1,7 @@
 import click
 import pandas as pd
 
-from ape import chain, Contract
+from ape import chain, Contract, networks
 
 MIN_TICK = -887272
 MAX_TICK = -MIN_TICK
@@ -12,6 +12,7 @@ BLOCK_TIME = 12
 
 def main():
     block = chain.blocks.head
+    ecosystem = networks.provider.network.ecosystem.name
     click.echo(
         f"Running populate.py on chainid {chain.chain_id} at block number {block.number} ..."
     )
@@ -75,6 +76,6 @@ def main():
 
     click.echo(f"Saving pool liquidity profile for pool {pool_address} ...")
     df.to_csv(
-        f"scripts/results/{pool_address}_{block.number}_{start_tick}_{stop_tick}.csv",
+        f"scripts/results/{ecosystem}/{pool_address}_{block.number}_{start_tick}_{stop_tick}.csv",
         index=False,
     )
